@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public class User {
     
-    private static HashMap<String, String> saved_users = new HashMap<>();
+    private static final HashMap<String, String> saved_users = new HashMap<>();
     
     private String firstName;
     private String lastName;
