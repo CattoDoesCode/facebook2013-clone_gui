@@ -20,6 +20,7 @@ public class LandingPage extends javax.swing.JFrame {
     public LandingPage() {
         setTitle("Pisbook (Facebook clone) - Log In or Sign Up");
         initComponents();
+        
     }
 
     /**
@@ -507,7 +508,8 @@ public class LandingPage extends javax.swing.JFrame {
         boolean login_success = user_auth.log_in(u_name, u_pass);
         
         if (login_success == true) {
-            JOptionPane.showMessageDialog(this, "log in successful");
+            new NewsFeed().setVisible(true);
+            dispose();
         }
         else {
             JOptionPane.showMessageDialog(this, "invalid email or password!");
