@@ -542,7 +542,8 @@ public class LandingPage extends javax.swing.JFrame {
             dispose();
         }
         else {
-            JOptionPane.showMessageDialog(this, "invalid email or password!");
+            JOptionPane.showMessageDialog(this, "invalid email or password!", "System Message",
+        JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 
@@ -600,7 +601,9 @@ public class LandingPage extends javax.swing.JFrame {
                 rbtn_male.setForeground(Color.red);
             }
             
-            JOptionPane.showMessageDialog(this, "please fill in required fields!");
+            JOptionPane.showMessageDialog(this, "please fill in required fields!", "System Message",
+        JOptionPane.ERROR_MESSAGE);
+            
         }
         else {
             UserAuthentication user_auth = new UserAuthentication();
