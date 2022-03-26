@@ -13,6 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -59,7 +60,6 @@ public class LandingPage extends javax.swing.JFrame {
         tf_signup_firstName = new javax.swing.JTextField();
         tf_signup_lastName = new javax.swing.JTextField();
         tf_signup_email_reEntered = new javax.swing.JTextField();
-        pf_signup_pass = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         cb_month = new javax.swing.JComboBox<>();
         cb_day = new javax.swing.JComboBox<>();
@@ -76,6 +76,9 @@ public class LandingPage extends javax.swing.JFrame {
         lbl_DataUsePolicy = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         lbl_CookieUse = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        pf_signup_pass = new javax.swing.JPasswordField();
+        pf_btn_viewPass = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -130,7 +133,7 @@ public class LandingPage extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jCheckBox1)
@@ -230,15 +233,6 @@ public class LandingPage extends javax.swing.JFrame {
             }
         });
 
-        pf_signup_pass.setForeground(java.awt.Color.gray);
-        pf_signup_pass.setText("Password");
-        pf_signup_pass.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createEmptyBorder(1, 8, 1, 1)));
-        pf_signup_pass.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pf_signup_passFocusGained(evt);
-            }
-        });
-
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setText("Brthday:");
 
@@ -330,6 +324,53 @@ public class LandingPage extends javax.swing.JFrame {
             }
         });
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        jPanel6.setMaximumSize(new java.awt.Dimension(32, 32));
+        jPanel6.setMinimumSize(new java.awt.Dimension(32, 32));
+        jPanel6.setPreferredSize(new java.awt.Dimension(391, 36));
+
+        pf_signup_pass.setForeground(java.awt.Color.gray);
+        pf_signup_pass.setText("Password");
+        pf_signup_pass.setBorder(null);
+        pf_signup_pass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pf_signup_passFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pf_signup_passFocusLost(evt);
+            }
+        });
+
+        pf_btn_viewPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/morales/gui/assets/invisible.png"))); // NOI18N
+        pf_btn_viewPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pf_btn_viewPassMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pf_signup_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pf_btn_viewPass)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(pf_signup_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pf_btn_viewPass)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -338,29 +379,21 @@ public class LandingPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel4)
-                                .addComponent(tf_signup_email)
-                                .addComponent(tf_signup_email_reEntered)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(tf_signup_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tf_signup_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(pf_signup_pass))
-                            .addComponent(jLabel6)
+                        .addComponent(rbtn_female)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbtn_male)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4)
+                            .addComponent(tf_signup_email)
+                            .addComponent(tf_signup_email_reEntered)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(cb_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cb_day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cb_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel11)))
+                                    .addComponent(jLabel5)
+                                    .addComponent(tf_signup_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_signup_lastName))
                             .addComponent(btn_sign_up, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
@@ -375,21 +408,28 @@ public class LandingPage extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbl_Terms)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel16)))
-                        .addGap(0, 76, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(rbtn_female)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbtn_male)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jLabel16))
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(cb_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cb_day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cb_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel11)))
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_sign_up, tf_signup_firstName, tf_signup_lastName});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_sign_up, tf_signup_firstName});
 
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
@@ -401,8 +441,8 @@ public class LandingPage extends javax.swing.JFrame {
                 .addComponent(tf_signup_email, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tf_signup_email_reEntered, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pf_signup_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -430,7 +470,7 @@ public class LandingPage extends javax.swing.JFrame {
                     .addComponent(lbl_CookieUse))
                 .addGap(18, 18, 18)
                 .addComponent(btn_sign_up, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {tf_signup_firstName, tf_signup_lastName});
@@ -458,23 +498,27 @@ public class LandingPage extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addContainerGap(45, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addGap(60, 60, 60)
+                .addGap(84, 84, 84)
                 .addComponent(jLabel9)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -507,7 +551,7 @@ public class LandingPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -547,15 +591,60 @@ public class LandingPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 
+    boolean isView = false;     
+    private void pf_btn_viewPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pf_btn_viewPassMouseClicked
+        if (!isView) {
+            pf_signup_pass.setEchoChar((char) 0);
+            pf_btn_viewPass.setIcon(new ImageIcon(getClass().getResource("assets/view.png")));
+            isView = true;
+        }
+        else {
+            pf_signup_pass.setEchoChar('*');
+            pf_btn_viewPass.setIcon(new ImageIcon(getClass().getResource("assets/invisible.png")));
+            isView = false;
+        }
+    }//GEN-LAST:event_pf_btn_viewPassMouseClicked
+
+    private void pf_signup_passFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pf_signup_passFocusGained
+        String pass = new String(pf_signup_pass.getPassword());
+        if (pass.equals("Password")) {
+            pf_signup_pass.setText("");
+        }
+        pf_signup_pass.setForeground(Color.BLACK);
+    }//GEN-LAST:event_pf_signup_passFocusGained
+
+    private void lbl_CookieUseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_CookieUseMouseClicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://www.facebook.com/policies/cookies/"));
+        } catch (URISyntaxException | IOException ex) {
+            Logger.getLogger(LandingPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lbl_CookieUseMouseClicked
+
+    private void lbl_DataUsePolicyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_DataUsePolicyMouseClicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://www.facebook.com/about/privacy/update"));
+        } catch (URISyntaxException | IOException ex) {
+            Logger.getLogger(LandingPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lbl_DataUsePolicyMouseClicked
+
+    private void lbl_TermsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_TermsMouseClicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://www.facebook.com/legal/terms/update"));
+        } catch (URISyntaxException | IOException ex) {
+            Logger.getLogger(LandingPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lbl_TermsMouseClicked
+
     private void btn_sign_upActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sign_upActionPerformed
 
-        
         String firstName = tf_signup_firstName.getText();
         String lastName = tf_signup_lastName.getText();
         String emailAdd = tf_signup_email.getText();
         String reEmailAdd = tf_signup_email_reEntered.getText();
         String pass = new String(pf_signup_pass.getPassword());
-        String month = "" + cb_month.getSelectedItem(); // empty String concatenation changes the return Object to String 
+        String month = "" + cb_month.getSelectedItem(); // empty String concatenation changes the return Object to String
         String day = "" + cb_day.getSelectedItem();
         String year = "" + cb_year.getSelectedItem();
         String sex;
@@ -568,9 +657,9 @@ public class LandingPage extends javax.swing.JFrame {
         else {
             sex = "";
         }
-        
-        
-        // TODO: error catcher - weak password, invalid email
+
+        // TODO: error catcher - invalid email
+        // input error catcher - empty fields
         if (firstName.equals("First Name") || lastName.equals("Last Name") || emailAdd.equals("Email") || reEmailAdd.equals("Re-enter Email") || pass.equals("Password") || month.equals("Month:") || day.equals("Day:") || year.equals("Year:") || sex.isEmpty()) {
             if (firstName.equals("First Name")) {
                 tf_signup_firstName.setForeground(Color.red);
@@ -600,28 +689,88 @@ public class LandingPage extends javax.swing.JFrame {
                 rbtn_female.setForeground(Color.red);
                 rbtn_male.setForeground(Color.red);
             }
-            
+
             JOptionPane.showMessageDialog(this, "please fill in required fields!", "System Message",
-        JOptionPane.ERROR_MESSAGE);
-            
+                JOptionPane.ERROR_MESSAGE);
+
         }
         else {
+            // input error catcher - re-enter email doesn't match
             if (!tf_signup_email_reEntered.getText().equals(tf_signup_email.getText())) {
                 JOptionPane.showMessageDialog(this, "email doesn't match", "System Message",
-        JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE);
+            }
+
+            UserAuthentication user_auth = new UserAuthentication();
+
+            // input error catcher - weak password
+            if (!user_auth.isStrongPassword(pass)) {
+                JOptionPane.showMessageDialog(this, "weak password! \n\n - Password should be at least 8 characters \n - A mixture of both uppercase and lowercase letters \n - A mixture of letters and numbers \n - Inclusion of at least one special character, e.g., ! @ # ?", "System Message",
+                    JOptionPane.ERROR_MESSAGE);
+                pf_signup_pass.setForeground(Color.red);
             }
             else {
-                UserAuthentication user_auth = new UserAuthentication();
                 user_auth.sign_up(firstName, lastName, emailAdd, reEmailAdd, pass, month, day, year, sex);
                 JOptionPane.showMessageDialog(this, "Sign Up successful!");
             }
-            
-            
+
         }
-        
+
     }//GEN-LAST:event_btn_sign_upActionPerformed
 
-    // <editor-fold defaultstate="collapsed" desc="Sign Up Fields Focus Listeners">    
+    // <editor-fold defaultstate="collapsed" desc="Sign Up Fields Focus Listeners">
+    private void rbtn_maleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rbtn_maleFocusGained
+        rbtn_male.setForeground(Color.BLACK);
+        rbtn_female.setForeground(Color.BLACK);
+    }//GEN-LAST:event_rbtn_maleFocusGained
+
+    private void rbtn_femaleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rbtn_femaleFocusGained
+        rbtn_female.setForeground(Color.BLACK);
+        rbtn_male.setForeground(Color.BLACK);
+    }//GEN-LAST:event_rbtn_femaleFocusGained
+
+    private void cb_yearFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cb_yearFocusGained
+        cb_year.setForeground(Color.BLACK);
+    }//GEN-LAST:event_cb_yearFocusGained
+
+    private void cb_dayFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cb_dayFocusGained
+        cb_day.setForeground(Color.BLACK);
+    }//GEN-LAST:event_cb_dayFocusGained
+
+    private void cb_monthFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cb_monthFocusGained
+        cb_month.setForeground(Color.BLACK);
+    }//GEN-LAST:event_cb_monthFocusGained
+
+    private void tf_signup_email_reEnteredFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_email_reEnteredFocusLost
+        if (tf_signup_email_reEntered.getText().isEmpty()) {
+            tf_signup_email_reEntered.setForeground(Color.GRAY);
+            tf_signup_email_reEntered.setText("Re-enter Email");
+        }
+        if ((!tf_signup_email_reEntered.getText().equals(tf_signup_email.getText())) && !tf_signup_email_reEntered.getText().equals("Re-enter Email")) {
+            tf_signup_email_reEntered.setForeground(Color.red);
+        }
+        else if(tf_signup_email_reEntered.getText().equals("Re-enter Email")) {
+            tf_signup_email_reEntered.setForeground(Color.GRAY);
+        }
+        else {
+            tf_signup_email_reEntered.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_tf_signup_email_reEnteredFocusLost
+
+    private void tf_signup_email_reEnteredFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_email_reEnteredFocusGained
+        if (tf_signup_email_reEntered.getText().equals("Re-enter Email")) {
+            tf_signup_email_reEntered.setText("");
+        }
+        tf_signup_email_reEntered.setForeground(Color.BLACK);
+    }//GEN-LAST:event_tf_signup_email_reEnteredFocusGained
+
+    private void tf_signup_lastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_lastNameFocusLost
+        if (tf_signup_lastName.getText().isEmpty()) {
+            tf_signup_lastName.setForeground(Color.GRAY);
+            tf_signup_lastName.setText("Last Name");
+        }
+    }//GEN-LAST:event_tf_signup_lastNameFocusLost
+
     private void tf_signup_lastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_lastNameFocusGained
         if (tf_signup_lastName.getText().equals("Last Name")) {
             tf_signup_lastName.setText("");
@@ -629,12 +778,12 @@ public class LandingPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tf_signup_lastNameFocusGained
 
-    private void tf_signup_lastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_lastNameFocusLost
-        if (tf_signup_lastName.getText().isEmpty()) {
-            tf_signup_lastName.setForeground(Color.GRAY);   
-            tf_signup_lastName.setText("Last Name");
+    private void tf_signup_firstNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_firstNameFocusLost
+        if (tf_signup_firstName.getText().isEmpty()) {
+            tf_signup_firstName.setForeground(Color.GRAY);
+            tf_signup_firstName.setText("First Name");
         }
-    }//GEN-LAST:event_tf_signup_lastNameFocusLost
+    }//GEN-LAST:event_tf_signup_firstNameFocusLost
 
     private void tf_signup_firstNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_firstNameFocusGained
         if (tf_signup_firstName.getText().equals("First Name")) {
@@ -643,12 +792,12 @@ public class LandingPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tf_signup_firstNameFocusGained
 
-    private void tf_signup_firstNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_firstNameFocusLost
-        if (tf_signup_firstName.getText().isEmpty()) { 
-            tf_signup_firstName.setForeground(Color.GRAY);
-            tf_signup_firstName.setText("First Name");
+    private void tf_signup_emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_emailFocusLost
+        if (tf_signup_email.getText().isEmpty()) {
+            tf_signup_email.setForeground(Color.GRAY);
+            tf_signup_email.setText("Email");
         }
-    }//GEN-LAST:event_tf_signup_firstNameFocusLost
+    }//GEN-LAST:event_tf_signup_emailFocusLost
 
     private void tf_signup_emailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_emailFocusGained
         if (tf_signup_email.getText().equals("Email")) {
@@ -657,84 +806,16 @@ public class LandingPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tf_signup_emailFocusGained
 
-    private void tf_signup_emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_emailFocusLost
-        if (tf_signup_email.getText().isEmpty()) { 
-            tf_signup_email.setForeground(Color.GRAY);
-            tf_signup_email.setText("Email");
+    private void pf_signup_passFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pf_signup_passFocusLost
+        String pass = new String(pf_signup_pass.getPassword());
+        if (pass.isEmpty()) {
+            pf_signup_pass.setForeground(Color.GRAY);
+            pf_signup_pass.setText("Password");
         }
-    }//GEN-LAST:event_tf_signup_emailFocusLost
-
-    private void tf_signup_email_reEnteredFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_email_reEnteredFocusGained
-        if (tf_signup_email_reEntered.getText().equals("Re-enter Email")) {
-            tf_signup_email_reEntered.setText("");
-        }
-            tf_signup_email_reEntered.setForeground(Color.BLACK);
-    }//GEN-LAST:event_tf_signup_email_reEnteredFocusGained
-
-    private void tf_signup_email_reEnteredFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_email_reEnteredFocusLost
-        if (tf_signup_email_reEntered.getText().isEmpty()) { 
-            tf_signup_email_reEntered.setForeground(Color.GRAY);
-            tf_signup_email_reEntered.setText("Re-enter Email");
-        }
-        if (!tf_signup_email_reEntered.getText().equals(tf_signup_email.getText())) {
-            tf_signup_email_reEntered.setForeground(Color.red);
-        }
-        else {
-            tf_signup_email_reEntered.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_tf_signup_email_reEnteredFocusLost
-
-    private void pf_signup_passFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pf_signup_passFocusGained
-        pf_signup_pass.setText("");
-        pf_signup_pass.setForeground(Color.BLACK);
-    }//GEN-LAST:event_pf_signup_passFocusGained
-
-    private void cb_monthFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cb_monthFocusGained
-        cb_month.setForeground(Color.BLACK);
-    }//GEN-LAST:event_cb_monthFocusGained
-
-    private void cb_dayFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cb_dayFocusGained
-        cb_day.setForeground(Color.BLACK);
-    }//GEN-LAST:event_cb_dayFocusGained
-
-    private void cb_yearFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cb_yearFocusGained
-        cb_year.setForeground(Color.BLACK);
-    }//GEN-LAST:event_cb_yearFocusGained
-
-    private void rbtn_femaleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rbtn_femaleFocusGained
-        rbtn_female.setForeground(Color.BLACK);
-        rbtn_male.setForeground(Color.BLACK);
-    }//GEN-LAST:event_rbtn_femaleFocusGained
-
-    private void rbtn_maleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rbtn_maleFocusGained
-        rbtn_male.setForeground(Color.BLACK);
-        rbtn_female.setForeground(Color.BLACK);
-    }//GEN-LAST:event_rbtn_maleFocusGained
-
-    private void lbl_TermsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_TermsMouseClicked
-        try {
-            Desktop.getDesktop().browse(new URI("https://www.facebook.com/legal/terms/update"));
-        } catch (URISyntaxException | IOException ex) {
-            Logger.getLogger(LandingPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_lbl_TermsMouseClicked
-
-    private void lbl_DataUsePolicyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_DataUsePolicyMouseClicked
-        try {
-            Desktop.getDesktop().browse(new URI("https://www.facebook.com/about/privacy/update"));
-        } catch (URISyntaxException | IOException ex) {
-            Logger.getLogger(LandingPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_lbl_DataUsePolicyMouseClicked
-
-    private void lbl_CookieUseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_CookieUseMouseClicked
-        try {
-            Desktop.getDesktop().browse(new URI("https://www.facebook.com/policies/cookies/"));
-        } catch (URISyntaxException | IOException ex) {
-            Logger.getLogger(LandingPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_lbl_CookieUseMouseClicked
-    // </editor-fold> 
+    }//GEN-LAST:event_pf_signup_passFocusLost
+    // </editor-fold>
+    
+    
     
     
     
@@ -783,10 +864,12 @@ public class LandingPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lbl_CookieUse;
     private javax.swing.JLabel lbl_DataUsePolicy;
     private javax.swing.JLabel lbl_Terms;
     private javax.swing.JLabel lbl_forgot_pass;
+    private javax.swing.JLabel pf_btn_viewPass;
     private javax.swing.JPasswordField pf_login_pass;
     private javax.swing.JPasswordField pf_signup_pass;
     private javax.swing.JRadioButton rbtn_female;
