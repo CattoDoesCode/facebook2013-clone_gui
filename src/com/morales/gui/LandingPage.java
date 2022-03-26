@@ -570,7 +570,7 @@ public class LandingPage extends javax.swing.JFrame {
         }
         
         
-        // TODO: error catcher - re-enter email, weak password, invalid email
+        // TODO: error catcher - weak password, invalid email
         if (firstName.equals("First Name") || lastName.equals("Last Name") || emailAdd.equals("Email") || reEmailAdd.equals("Re-enter Email") || pass.equals("Password") || month.equals("Month:") || day.equals("Day:") || year.equals("Year:") || sex.isEmpty()) {
             if (firstName.equals("First Name")) {
                 tf_signup_firstName.setForeground(Color.red);
@@ -606,9 +606,17 @@ public class LandingPage extends javax.swing.JFrame {
             
         }
         else {
-            UserAuthentication user_auth = new UserAuthentication();
-            user_auth.sign_up(firstName, lastName, emailAdd, reEmailAdd, pass, month, day, year, sex);
-            JOptionPane.showMessageDialog(this, "Sign Up successful!");
+            if (!tf_signup_email_reEntered.getText().equals(tf_signup_email.getText())) {
+                JOptionPane.showMessageDialog(this, "email doesn't match", "System Message",
+        JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                UserAuthentication user_auth = new UserAuthentication();
+                user_auth.sign_up(firstName, lastName, emailAdd, reEmailAdd, pass, month, day, year, sex);
+                JOptionPane.showMessageDialog(this, "Sign Up successful!");
+            }
+            
+            
         }
         
     }//GEN-LAST:event_btn_sign_upActionPerformed
@@ -659,14 +667,20 @@ public class LandingPage extends javax.swing.JFrame {
     private void tf_signup_email_reEnteredFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_email_reEnteredFocusGained
         if (tf_signup_email_reEntered.getText().equals("Re-enter Email")) {
             tf_signup_email_reEntered.setText("");
-            tf_signup_email_reEntered.setForeground(Color.BLACK);
         }
+            tf_signup_email_reEntered.setForeground(Color.BLACK);
     }//GEN-LAST:event_tf_signup_email_reEnteredFocusGained
 
     private void tf_signup_email_reEnteredFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_email_reEnteredFocusLost
         if (tf_signup_email_reEntered.getText().isEmpty()) { 
             tf_signup_email_reEntered.setForeground(Color.GRAY);
             tf_signup_email_reEntered.setText("Re-enter Email");
+        }
+        if (!tf_signup_email_reEntered.getText().equals(tf_signup_email.getText())) {
+            tf_signup_email_reEntered.setForeground(Color.red);
+        }
+        else {
+            tf_signup_email_reEntered.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_tf_signup_email_reEnteredFocusLost
 
