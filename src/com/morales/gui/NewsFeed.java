@@ -6,7 +6,6 @@ package com.morales.gui;
 
 
 import com.formdev.flatlaf.FlatLightLaf; // for overall Look and Feel
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**

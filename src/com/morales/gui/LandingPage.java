@@ -6,6 +6,13 @@ package com.morales.gui;
 
 import com.formdev.flatlaf.FlatLightLaf; // for overall Look and Feel
 import java.awt.Color;
+import java.awt.Desktop;
+import java.awt.Toolkit;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,15 +20,16 @@ import javax.swing.JOptionPane;
  * @author CattoDoesCode
  */
 public class LandingPage extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form LandingPage
      */
     public LandingPage() {
         setTitle("Pisbook (Facebook clone) - Log In or Sign Up");
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("assets/facebook-circle-logo-24.png")));
         initComponents();
         
-    }
+    }   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,11 +71,11 @@ public class LandingPage extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        lbl_Terms = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lbl_DataUsePolicy = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        lbl_CookieUse = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -93,6 +101,8 @@ public class LandingPage extends javax.swing.JFrame {
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password");
+
+        pf_login_pass.setEchoChar('#');
 
         btn_login.setBackground(new java.awt.Color(97, 121, 170));
         btn_login.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -184,7 +194,7 @@ public class LandingPage extends javax.swing.JFrame {
 
         tf_signup_firstName.setForeground(java.awt.Color.gray);
         tf_signup_firstName.setText("First Name");
-        tf_signup_firstName.setToolTipText(" First Name");
+        tf_signup_firstName.setToolTipText("Please input your first name here");
         tf_signup_firstName.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), javax.swing.BorderFactory.createEmptyBorder(1, 8, 1, 1)), null));
         tf_signup_firstName.setMargin(new java.awt.Insets(2, 32, 2, 6));
         tf_signup_firstName.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -282,26 +292,43 @@ public class LandingPage extends javax.swing.JFrame {
 
         jLabel12.setForeground(new java.awt.Color(102, 102, 255));
         jLabel12.setText("Why do I need to");
+        jLabel12.setToolTipText("Providing your birthday helps make sure you get the right Facebook experience for your age. If you want to change who sees this, go to the About section of your profile. For more details, please visit our Data Policy.");
 
         jLabel11.setForeground(new java.awt.Color(102, 102, 255));
         jLabel11.setText("provide my birthday?");
+        jLabel11.setToolTipText("Providing your birthday helps make sure you get the right Facebook experience for your age. If you want to change who sees this, go to the About section of your profile. For more details, please visit our Data Policy.");
 
         jLabel13.setText("By clicking Sign Up, you agree to our");
 
         jLabel14.setText("read our");
 
-        jLabel15.setForeground(new java.awt.Color(102, 102, 255));
-        jLabel15.setText("Terms");
+        lbl_Terms.setForeground(new java.awt.Color(102, 102, 255));
+        lbl_Terms.setText("Terms");
+        lbl_Terms.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_TermsMouseClicked(evt);
+            }
+        });
 
         jLabel16.setText("and that you have");
 
-        jLabel17.setForeground(new java.awt.Color(102, 102, 255));
-        jLabel17.setText("Data Use Policy,");
+        lbl_DataUsePolicy.setForeground(new java.awt.Color(102, 102, 255));
+        lbl_DataUsePolicy.setText("Data Use Policy,");
+        lbl_DataUsePolicy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_DataUsePolicyMouseClicked(evt);
+            }
+        });
 
         jLabel18.setText("including our");
 
-        jLabel19.setForeground(new java.awt.Color(102, 102, 255));
-        jLabel19.setText("Cookie Use.");
+        lbl_CookieUse.setForeground(new java.awt.Color(102, 102, 255));
+        lbl_CookieUse.setText("Cookie Use.");
+        lbl_CookieUse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_CookieUseMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -310,48 +337,51 @@ public class LandingPage extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel4)
-                        .addComponent(tf_signup_email)
-                        .addComponent(tf_signup_email_reEntered)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(tf_signup_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(tf_signup_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(pf_signup_pass))
-                    .addComponent(jLabel6)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(cb_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cb_day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cb_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel11)))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel4)
+                                .addComponent(tf_signup_email)
+                                .addComponent(tf_signup_email_reEntered)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(tf_signup_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tf_signup_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(pf_signup_pass))
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(cb_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cb_day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cb_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel11)))
+                            .addComponent(btn_sign_up, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_DataUsePolicy)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_CookieUse))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_Terms)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel16)))
+                        .addGap(0, 76, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(rbtn_female)
                         .addGap(18, 18, 18)
-                        .addComponent(rbtn_male))
-                    .addComponent(btn_sign_up, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel19))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel16)))
-                .addGap(0, 76, Short.MAX_VALUE))
+                        .addComponent(rbtn_male)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_sign_up, tf_signup_firstName, tf_signup_lastName});
@@ -390,14 +420,14 @@ public class LandingPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15)
+                    .addComponent(lbl_Terms)
                     .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel17)
+                    .addComponent(lbl_DataUsePolicy)
                     .addComponent(jLabel18)
-                    .addComponent(jLabel19))
+                    .addComponent(lbl_CookieUse))
                 .addGap(18, 18, 18)
                 .addComponent(btn_sign_up, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -590,7 +620,7 @@ public class LandingPage extends javax.swing.JFrame {
 
     private void tf_signup_lastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_signup_lastNameFocusLost
         if (tf_signup_lastName.getText().isEmpty()) {
-            tf_signup_lastName.setForeground(Color.GRAY);
+            tf_signup_lastName.setForeground(Color.GRAY);   
             tf_signup_lastName.setText("Last Name");
         }
     }//GEN-LAST:event_tf_signup_lastNameFocusLost
@@ -663,6 +693,30 @@ public class LandingPage extends javax.swing.JFrame {
         rbtn_male.setForeground(Color.BLACK);
         rbtn_female.setForeground(Color.BLACK);
     }//GEN-LAST:event_rbtn_maleFocusGained
+
+    private void lbl_TermsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_TermsMouseClicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://www.facebook.com/legal/terms/update"));
+        } catch (URISyntaxException | IOException ex) {
+            Logger.getLogger(LandingPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lbl_TermsMouseClicked
+
+    private void lbl_DataUsePolicyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_DataUsePolicyMouseClicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://www.facebook.com/about/privacy/update"));
+        } catch (URISyntaxException | IOException ex) {
+            Logger.getLogger(LandingPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lbl_DataUsePolicyMouseClicked
+
+    private void lbl_CookieUseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_CookieUseMouseClicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://www.facebook.com/policies/cookies/"));
+        } catch (URISyntaxException | IOException ex) {
+            Logger.getLogger(LandingPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lbl_CookieUseMouseClicked
     // </editor-fold> 
     
     
@@ -697,11 +751,8 @@ public class LandingPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -715,6 +766,9 @@ public class LandingPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lbl_CookieUse;
+    private javax.swing.JLabel lbl_DataUsePolicy;
+    private javax.swing.JLabel lbl_Terms;
     private javax.swing.JLabel lbl_forgot_pass;
     private javax.swing.JPasswordField pf_login_pass;
     private javax.swing.JPasswordField pf_signup_pass;
